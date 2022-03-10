@@ -5,6 +5,7 @@ import java.util.Scanner;
 public class Exercise4 {
 	public static void main(String[] agrs) {
 
+		@SuppressWarnings("resource")
 		Scanner scanner = new Scanner(System.in);
 		System.out.println("Your name:");
 		String myName = scanner.nextLine();
@@ -78,7 +79,7 @@ public class Exercise4 {
 		System.out.println("--------------");
 		// Câu 7
 
-		uocSoChan(myNumN2);
+		sumUSC(myNumN2);
 		System.out.println();
 
 		System.out.println("--------------");
@@ -86,7 +87,7 @@ public class Exercise4 {
 
 		System.out.print("Input Number");
 		int num = scanner.nextInt();
-		
+
 		sumSoChan(num);
 
 	}
@@ -110,7 +111,6 @@ public class Exercise4 {
 			expon = expon * a;
 			sum += expon;
 		}
-		;
 		return sum;
 	}
 
@@ -129,24 +129,30 @@ public class Exercise4 {
 
 	public static void uocSoLe(int a) {
 		System.out.println("Uoc so le cua " + a + ": ");
+		int maxSoLe = 0;
 		for (int i = 1; i <= a; i++) {
 			if (a % i == 0 && i % 2 != 0) {
-				System.out.print(i + " ");
+				if (i > maxSoLe) {
+					maxSoLe = i;
+				}
 			}
 		}
+		System.out.println(maxSoLe);
 	}
 
-	public static void uocSoChan(int a) {
-		System.out.println("Uoc so chan cua " + a + ": ");
+	public static void sumUSC(int a) {
+		System.out.println("Tong uoc so chan cua " + a + ": ");
+		int tongUSC = 0;
 		for (int i = 1; i <= a; i++) {
 			if (a % i == 0 && i % 2 == 0) {
-				System.out.print(i + " ");
+				tongUSC += i;
 			}
 		}
+		System.out.println(tongUSC);
 	}
 
 	public static void sumSoChan(int a) {
-		int digit,total=0;
+		int digit, total = 0;
 		while (a > 0) {
 			digit = a % 10;
 			if (digit % 2 == 0) {
